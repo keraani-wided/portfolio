@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wided Karaani – .NET Software Developer</title>
+<meta name="description" content="Portfolio of Wided Karaani, .NET developer (C#, ASP.NET Core, Clean Architecture, Oracle) based in Kairouan, Tunisia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8F0;--surface:#fff;--card:#F7F3EE;--ink:#1B2236;--muted:#5E6578;--orange:#F26B1D;--orange-d:#C9520F;--tint:#FFE3CF;--line:#EADFD3;--r:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+h2{font-size:clamp(26px,4vw,36px);line-height:1.2;font-weight:800;text-align:center;letter-spacing:-.02em}
+.sub{text-align:center;color:var(--muted);max-width:560px;margin:10px auto 40px}
+mark{background:var(--tint);color:inherit;padding:0 .2em;border-radius:8px}
+.o{color:var(--orange)}
+/* nav */
+header{position:sticky;top:0;z-index:10;background:rgba(255,248,240,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:18px}
+.logo span{color:var(--orange)}
+.links{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:600}
+.links a:hover{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-weight:700;font-size:14px;padding:12px 22px;border-radius:12px;border:2px solid var(--orange);transition:background .2s}
+.btn:hover{background:var(--orange-d);border-color:var(--orange-d)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.links .btn{color:#fff}
+/* hero */
+.hero{padding:64px 0 56px;text-align:center}
+.avatar{width:84px;height:84px;border-radius:50%;margin:0 auto 18px;background:var(--tint);border:3px solid var(--orange);display:grid;place-items:center;font-weight:800;font-size:28px;color:var(--orange-d);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.hello{display:inline-block;font-size:14px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);padding:5px 14px;border-radius:99px;margin-bottom:18px}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.12;font-weight:800;letter-spacing:-.03em;max-width:820px;margin:0 auto 18px}
+.hero p{color:var(--muted);max-width:620px;margin:0 auto 30px;font-size:17px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* marquee */
+.band{background:var(--tint);border-block:1px solid var(--line);overflow:hidden;padding:18px 0}
+.track{display:flex;gap:44px;width:max-content;animation:slide 32s linear infinite;font-weight:700;font-size:18px;white-space:nowrap}
+.track span::before{content:"✺";color:var(--orange);margin-right:12px}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}html{scroll-behavior:auto}}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:var(--surface);border:2px dashed var(--orange);border-radius:var(--r);padding:28px}
+.stat b{display:block;font-size:40px;line-height:1.1;font-weight:800;color:var(--orange)}
+.stat small{color:var(--muted);font-size:14px;font-weight:500}
+.stat{padding:6px 10px}
+/* cards */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.card.soft{background:var(--card)}
+.card h3{font-size:19px;font-weight:700;line-height:1.3;margin:6px 0 8px}
+.card p,.card li{color:var(--muted);font-size:15px}
+.kicker{font-size:13px;font-weight:700;color:var(--orange-d)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{font-size:12.5px;font-weight:600;background:var(--card);border:1px solid var(--line);padding:4px 11px;border-radius:99px}
+.tag.hot{background:var(--tint);border-color:#F8C9A5;color:var(--orange-d)}
+.card ul{margin:10px 0 0 18px}
+.card li{margin-bottom:5px}
+.proj{display:flex;flex-direction:column}
+.proj .tags{margin-top:auto;padding-top:14px}
+.proj .lnk{margin-top:16px;font-weight:700;font-size:14px;color:var(--orange-d)}
+.proj .lnk:hover{text-decoration:underline}
+/* timeline */
+.tl{max-width:800px;margin:0 auto;border-left:3px solid var(--tint);padding-left:28px}
+.job{position:relative;margin-bottom:28px}
+.job::before{content:"";position:absolute;left:-38px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--orange);border:3px solid var(--bg)}
+.job .when{font-size:13px;font-weight:700;color:var(--orange-d)}
+.job h3{font-size:18px;font-weight:700}
+.job .at{color:var(--muted);font-size:14.5px;font-weight:500;margin-bottom:6px}
+.job ul{margin-left:18px;color:var(--muted);font-size:15px}
+.job li{margin-bottom:4px}
+/* contact */
+.contact{background:var(--ink);color:#fff;border-radius:28px;padding:56px 28px;text-align:center}
+.contact h2{color:#fff}
+.contact .sub{color:#B9C0D4}
+.contact .cta a.btn.ghost{color:#fff;border-color:#fff}
+.contact .cta a.btn.ghost:hover{background:#fff;color:var(--ink)}
+footer{text-align:center;color:var(--muted);font-size:14px;padding:28px 0 40px}
+@media (max-width:860px){
+ .g3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}
+ .links a:not(.btn){display:none}
+}
+@media (max-width:600px){
+ section{padding:52px 0}.g3,.g2{grid-template-columns:1fr}.hero{padding-top:44px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <nav aria-label="Main">
+   <a class="logo" href="#top">Wided<span>.</span>K</a>
+   <div class="links">
+    <a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a>
+    <a class="btn" href="#contact">Hire me</a>
+   </div>
+  </nav>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap">
+  <!-- To use your photo: replace the initials with <img src="photo.jpg" alt="Wided Karaani"> -->
+  <div class="avatar" aria-hidden="true">WK</div>
+  <span class="hello">Hi, I’m Wided Karaani · Kairouan, Tunisia</span>
+  <h1><mark>.NET Developer</mark> building secure, <mark>enterprise-grade</mark> back ends</h1>
+  <p>I design APIs and business applications with C#, ASP.NET Core, Clean Architecture and Oracle, and I deliver complete products with React and Next.js. Master’s degree in Distributed Computing. Open to remote work and relocation to Europe.</p>
+  <div class="cta">
+   <a class="btn" href="Wided_Karaani_CV_EN_dotnet.pdf" download>Download CV (PDF)</a>
+   <a class="btn ghost" href="#projects">See my projects</a>
+  </div>
+ </div>
+</section>
+
+<div class="band" aria-hidden="true">
+ <div class="track">
+  <span>C#</span><span>ASP.NET Core</span><span>Entity Framework Core</span><span>Clean Architecture</span><span>CQRS · MediatR</span><span>Oracle</span><span>SQL Server</span><span>REST APIs</span>
+  <span>C#</span><span>ASP.NET Core</span><span>Entity Framework Core</span><span>Clean Architecture</span><span>CQRS · MediatR</span><span>Oracle</span><span>SQL Server</span><span>REST APIs</span>
+ </div>
+</div>
+
+<section>
+ <div class="wrap">
+  <h2>My work in numbers</h2>
+  <p class="sub">What I have shipped and what I am building now.</p>
+  <div class="stats">
+   <div class="stat"><b>2</b><small>Production web apps delivered</small></div>
+   <div class="stat"><b>1</b><small>Enterprise ERP on Oracle (ongoing)</small></div>
+   <div class="stat"><b>3</b><small>Languages supported in Losange (AR, EN, FR)</small></div>
+   <div class="stat"><b>M.Sc.</b><small>Distributed Computing, ISITCom</small></div>
+  </div>
+ </div>
+</section>
+
+<section id="skills" style="padding-top:24px">
+ <div class="wrap">
+  <h2>Building reliable <span class="o">business software</span></h2>
+  <p class="sub">My core stack is .NET. I add modern front end and CMS skills to ship complete applications.</p>
+  <div class="grid g2">
+   <article class="card soft">
+    <span class="kicker">Core</span>
+    <h3>.NET back end</h3>
+    <p>Secure REST APIs and business workflows built in layers that stay easy to test and maintain.</p>
+    <div class="tags"><span class="tag hot">C#</span><span class="tag hot">ASP.NET Core</span><span class="tag hot">Entity Framework Core</span><span class="tag hot">MediatR</span><span class="tag hot">CQRS</span></div>
+   </article>
+   <article class="card soft">
+    <span class="kicker">Core</span>
+    <h3>Architecture and security</h3>
+    <p>Clean Architecture, domain-driven design (organising code around the business rules), authentication, role-based access control and multi-tenancy.</p>
+    <div class="tags"><span class="tag hot">Clean Architecture</span><span class="tag hot">RBAC</span><span class="tag">Multi-tenancy</span><span class="tag">Distributed systems</span></div>
+   </article>
+   <article class="card">
+    <span class="kicker">Data</span>
+    <h3>Databases</h3>
+    <p>Relational and document databases for enterprise and web products.</p>
+    <div class="tags"><span class="tag hot">Oracle</span><span class="tag hot">SQL Server</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span></div>
+   </article>
+   <article class="card">
+    <span class="kicker">Complementary</span>
+    <h3>Front end and CMS</h3>
+    <p>Responsive, SEO-friendly interfaces and headless CMS back offices.</p>
+    <div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Angular</span><span class="tag">Payload CMS</span><span class="tag">Tailwind CSS</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">Vercel</span></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="projects" style="padding-top:24px">
+ <div class="wrap">
+  <h2>Projects</h2>
+  <p class="sub">From enterprise back ends to a live learning platform.</p>
+  <div class="grid g3">
+   <article class="card proj">
+    <span class="kicker">Enterprise · Ongoing</span>
+    <h3>Oracle ERP</h3>
+    <p>ERP solution organised in Domain, Application, Infrastructure and Presentation layers. Business workflows run through CQRS and MediatR, behind secure and maintainable APIs.</p>
+    <div class="tags"><span class="tag hot">ASP.NET Core</span><span class="tag hot">C#</span><span class="tag hot">Oracle</span><span class="tag">EF Core</span><span class="tag">CQRS</span></div>
+    <a class="lnk" href="#contact">Details on request</a>
+   </article>
+   <article class="card proj">
+    <span class="kicker">Live · Recently launched</span>
+    <h3>Losange (Pilot TN)</h3>
+    <p>Learning platform already used by teachers and students: live video sessions, chat, collaborative whiteboard, automated reminders, and a right-to-left interface in Arabic, English and French.</p>
+    <div class="tags"><span class="tag">Next.js 16</span><span class="tag">Payload CMS 3</span><span class="tag">PostgreSQL</span><span class="tag">LiveKit</span><span class="tag">Redis</span></div>
+    <a class="lnk" href="https://www.losange.tn" target="_blank" rel="noopener">Visit losange.tn</a>
+   </article>
+   <article class="card proj">
+    <span class="kicker">One-to-one learning</span>
+    <h3>Cogito School</h3>
+    <p>Multi-role system for students, trainers and administrators: course catalogue, private lesson booking, assignments and progress tracking, with access control in Payload CMS.</p>
+    <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Payload CMS</span><span class="tag">Tailwind</span><span class="tag">Vercel</span></div>
+    <a class="lnk" href="#contact">Code on request</a>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="experience" style="padding-top:24px">
+ <div class="wrap">
+  <h2>Experience</h2>
+  <p class="sub">Eight years across web development and IT.</p>
+  <div class="tl">
+   <div class="job">
+    <span class="when">Jan 2026 – Present</span>
+    <h3>Full-Stack Developer</h3><div class="at">Originis Solutions · Remote</div>
+    <ul>
+     <li>Contribute to an enterprise ERP on Oracle with ASP.NET Core, Clean Architecture, CQRS and MediatR.</li>
+     <li>Delivered 2 production web applications with Next.js, React and Payload CMS.</li>
+     <li>Built multi-tenant headless CMS solutions with authentication, role-based access control and real-time features.</li>
+    </ul>
+   </div>
+   <div class="job">
+    <span class="when">Dec 2020 – Dec 2025</span>
+    <h3>Independent study and development</h3><div class="at">Self-directed</div>
+    <ul><li>Hands-on learning and projects in .NET, C#, Next.js, Payload CMS and full-stack architecture.</li></ul>
+   </div>
+   <div class="job">
+    <span class="when">Aug 2020 – Dec 2020</span>
+    <h3>Full-Stack Developer</h3><div class="at">SDI, Kairouan · Angular, Symfony</div>
+    <ul><li>Analysed client requirements, delivered projects and handled corrective and evolutionary maintenance.</li></ul>
+   </div>
+   <div class="job">
+    <span class="when">Jan 2020 – Aug 2020</span>
+    <h3>Full-Stack Developer</h3><div class="at">Itgate Group, Sousse · Angular, Spring Boot</div>
+    <ul><li>Gathered user requirements and improved applications based on feedback.</li></ul>
+   </div>
+   <div class="job">
+    <span class="when">2017 – 2019</span>
+    <h3>Network Engineer and IT Engineer</h3><div class="at">Prima Call Centre · Testafid+, Sousse</div>
+    <ul><li>Managed reports and records, monitored tenders and reviewed project specifications.</li></ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="education" style="padding-top:24px">
+ <div class="wrap">
+  <h2>Education</h2>
+  <p class="sub">&nbsp;</p>
+  <div class="grid g2" style="margin-top:-24px">
+   <article class="card soft">
+    <span class="kicker">2014 – 2017</span>
+    <h3>Master of Research in Distributed Computing</h3>
+    <p>ISITCom, Hammam Sousse. Thesis on data exploitation of a 6TiSCH wireless sensor network: scheduling comparison, an energy-aware routing metric and a node-failure diagnosis mechanism.</p>
+   </article>
+   <article class="card soft">
+    <span class="kicker">2011 – 2013</span>
+    <h3>Bachelor in Computer Networks</h3>
+    <p>ISITCom, Hammam Sousse. Final project: secure wired and wireless network. Certification in Full Stack (Angular and Spring Boot), Itgate Training, 2020.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="contact" style="padding-top:24px">
+ <div class="wrap">
+  <div class="contact">
+   <h2>Let’s work together</h2>
+   <p class="sub">I am looking for a .NET developer role, remote or in Europe. Send me a message and I will reply quickly.</p>
+   <div class="cta">
+    <a class="btn" href="mailto:keraaniwided@gmail.com">keraaniwided@gmail.com</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/wided-karaani" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="https://github.com/keraani-wided" target="_blank" rel="noopener">GitHub</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+<footer>© 2026 Wided Karaani · Kairouan, Tunisia</footer>
+</body>
+</html>
